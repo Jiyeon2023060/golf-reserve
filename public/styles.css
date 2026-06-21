@@ -56,6 +56,17 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
+.login-box p.login-hint {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  color: #15803d;
+  font-size: 12.5px;
+  line-height: 1.5;
+  text-align: left;
+}
 .login-error {
   color: #dc2626;
   font-size: 13px;
