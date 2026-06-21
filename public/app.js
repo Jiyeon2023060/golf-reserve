@@ -71,9 +71,11 @@ $("#logout-btn").addEventListener("click", async () => {
 // ===== 드롭다운 =====
 function setupClubDropdown() {
   const clubSel = $("#club");
-  clubSel.innerHTML = Object.keys(GOLF_CLUBS)
-    .map((c) => `<option value="${c}">${c}</option>`)
-    .join("");
+  clubSel.innerHTML =
+    `<option value="">선택</option>` +
+    Object.keys(GOLF_CLUBS)
+      .map((c) => `<option value="${c}">${c}</option>`)
+      .join("");
   clubSel.addEventListener("change", fillCourseDropdown);
   fillCourseDropdown();
 }
@@ -81,9 +83,9 @@ function setupClubDropdown() {
 function fillCourseDropdown() {
   const club = $("#club").value;
   const courses = GOLF_CLUBS[club] || [];
-  $("#course").innerHTML = courses
-    .map((c) => `<option value="${c}">${c}</option>`)
-    .join("");
+  $("#course").innerHTML =
+    `<option value="">선택</option>` +
+    courses.map((c) => `<option value="${c}">${c}</option>`).join("");
 }
 
 // ===== 추가 / 입력 초기화 =====
@@ -94,6 +96,10 @@ $("#add-btn").addEventListener("click", async () => {
     play_date: $("#play-date").value,
     play_time: $("#play-time").value,
   };
+  if (!body.club || !body.course) {
+    alert("골프장과 코스를 선택하세요.");
+    return;
+  }
   if (!body.play_date || !body.play_time) {
     alert("날짜와 시간을 선택하세요.");
     return;
@@ -102,6 +108,13 @@ $("#add-btn").addEventListener("click", async () => {
     method: "POST",
     body: JSON.stringify(body),
   });
+  loadReservations();
+});
+
+// 전체 삭제
+$("#clear-all-btn").addEventListener("click", async () => {
+  if (!confirm("예약 리스트를 전체 삭제할까요?")) return;
+  await api("/api/reservations", { method: "DELETE" });
   loadReservations();
 });
 

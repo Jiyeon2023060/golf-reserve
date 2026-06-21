@@ -122,6 +122,16 @@ app.patch("/api/reservations/:id/check", requireAuth, async (req, res, next) => 
   }
 });
 
+// 전체 삭제
+app.delete("/api/reservations", requireAuth, async (req, res, next) => {
+  try {
+    await db.execute("DELETE FROM reservations");
+    res.json({ ok: true });
+  } catch (e) {
+    next(e);
+  }
+});
+
 // 한 건 삭제
 app.delete("/api/reservations/:id", requireAuth, async (req, res, next) => {
   try {
