@@ -1,0 +1,256 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+}
+.hidden {
+  display: none !important;
+}
+
+/* ===== 로그인 ===== */
+.login-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #16a34a, #065f46);
+}
+.login-box {
+  background: #fff;
+  padding: 36px 32px;
+  border-radius: 14px;
+  width: 320px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+.login-box h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+.login-box p {
+  margin: 0 0 20px;
+  color: #6b7280;
+  font-size: 14px;
+}
+.login-box input {
+  width: 100%;
+  padding: 11px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.login-box button {
+  width: 100%;
+  padding: 11px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.login-error {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 10px;
+  min-height: 16px;
+}
+
+/* ===== 상단바 ===== */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #065f46;
+  color: #fff;
+  padding: 14px 24px;
+}
+.brand {
+  font-size: 20px;
+  font-weight: 700;
+}
+.logout {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== 레이아웃 ===== */
+.container {
+  max-width: 880px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 22px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+.card h2 {
+  margin: 0 0 16px;
+  font-size: 17px;
+}
+
+/* ===== 입력 폼 ===== */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #4b5563;
+  gap: 6px;
+}
+.form-grid select,
+.form-grid input {
+  padding: 9px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+button.primary {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button.primary.big {
+  font-size: 16px;
+  padding: 12px 28px;
+}
+button.ghost {
+  background: #fff;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== 예약 테이블 ===== */
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.res-table th,
+.res-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eef0f2;
+  text-align: left;
+}
+.res-table th {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 600;
+}
+.col-check {
+  width: 36px;
+  text-align: center;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge.wait {
+  background: #fef3c7;
+  color: #92400e;
+}
+.badge.done {
+  background: #d1fae5;
+  color: #065f46;
+}
+.del-row {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 15px;
+}
+.del-row:hover {
+  color: #dc2626;
+}
+.empty-row {
+  color: #9ca3af;
+  font-size: 14px;
+  text-align: center;
+  padding: 12px 0;
+}
+
+/* ===== 예약 시작 설정 ===== */
+.time-row {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.time-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.time-label {
+  font-size: 13px;
+  color: #4b5563;
+}
+.time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+}
+.time-inputs input {
+  width: 60px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.clock {
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #065f46;
+  letter-spacing: 1px;
+}
+.status-msg {
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 20px;
+}
+
+@media (max-width: 560px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>골프장 예약</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- 로그인 화면 -->
+    <div id="login" class="login-screen hidden">
+      <form id="login-form" class="login-box">
+        <h1>⛳ 골프장 예약</h1>
+        <p>로그인이 필요합니다</p>
+        <input id="username" type="text" placeholder="아이디" autocomplete="username" />
+        <input id="password" type="password" placeholder="비밀번호" autocomplete="current-password" />
+        <button type="submit">로그인</button>
+        <div id="login-error" class="login-error"></div>
+      </form>
+    </div>
+
+    <!-- 메인 앱 -->
+    <div id="app" class="app hidden">
+      <header class="topbar">
+        <div class="brand">⛳ 골프장 예약</div>
+        <button id="logout-btn" class="logout">로그아웃</button>
+      </header>
+
+      <main class="container">
+        <!-- 예약 항목 만들기 -->
+        <section class="card">
+          <h2>예약 정보 입력</h2>
+          <div class="form-grid">
+            <label>
+              골프장
+              <select id="club"></select>
+            </label>
+            <label>
+              코스
+              <select id="course"></select>
+            </label>
+            <label>
+              날짜
+              <input id="play-date" type="date" />
+            </label>
+            <label>
+              시간
+              <input id="play-time" type="time" />
+            </label>
+          </div>
+          <div class="btn-row">
+            <button id="add-btn" class="primary">＋ 추가</button>
+            <button id="clear-btn" class="ghost">삭제(입력 초기화)</button>
+          </div>
+        </section>
+
+        <!-- 예약 리스트 -->
+        <section class="card">
+          <h2>예약 리스트</h2>
+          <table class="res-table">
+            <thead>
+              <tr>
+                <th class="col-check"><input id="check-all" type="checkbox" title="전체 선택" /></th>
+                <th>골프장</th>
+                <th>코스</th>
+                <th>날짜</th>
+                <th>시간</th>
+                <th>상태</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="res-body">
+              <!-- 행이 동적으로 추가됨 -->
+            </tbody>
+          </table>
+          <p id="empty-row" class="empty-row">추가된 예약이 없습니다.</p>
+        </section>
+
+        <!-- 예약 시작 시각 설정 -->
+        <section class="card">
+          <h2>예약 시작 설정</h2>
+          <div class="time-row">
+            <div class="time-block">
+              <span class="time-label">예약 시작 시각</span>
+              <div class="time-inputs">
+                <input id="start-h" type="number" min="0" max="23" placeholder="시" />
+                <span>:</span>
+                <input id="start-m" type="number" min="0" max="59" placeholder="분" />
+                <span>:</span>
+                <input id="start-s" type="number" min="0" max="59" placeholder="초" />
+              </div>
+            </div>
+            <div class="time-block">
+              <span class="time-label">현재 시각</span>
+              <div id="clock" class="clock">--:--:--</div>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button id="start-btn" class="primary big">▶ 예약 시작</button>
+            <button id="stop-btn" class="ghost hidden">■ 중지</button>
+          </div>
+          <div id="status-msg" class="status-msg"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
